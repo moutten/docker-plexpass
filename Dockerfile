@@ -8,15 +8,10 @@ RUN echo "force-unsafe-io" > /etc/dpkg/dpkg.cfg.d/02apt-speedup &&\
     echo "Acquire::http {No-Cache=True;};" > /etc/apt/apt.conf.d/no-cache && \
     apt-get -q update && \
     apt-get -qy --force-yes dist-upgrade && \
-    apt-get install -qy --force-yes \
-      ca-certificates curl \
-      openssl \
-      sudo \
-    && \
-    echo "deb http://shell.ninthgate.se/packages/debian plexpass main" > /etc/apt/sources.list.d/plexmediaserver.list && \
-    curl http://shell.ninthgate.se/packages/shell-ninthgate-se-keyring.key | apt-key add - && \
-    apt-get -q update && \
-    apt-get install -qy --force-yes plexmediaserver && \
+    apt-get install -qy --force-yes curl && \
+    curl -o plexmediaserver.deb https://downloads.plex.tv/plex-media-server/0.9.16.0.1754-23623fb/plexmediaserver_0.9.16.0.1754-23623fb_amd64.deb && \
+    dpkg -i plexmediaserver.deb && \
+    rm -f plexmediaserver.deb && \
     apt-get -y autoremove && \
     apt-get -y clean && \
     rm -rf /var/lib/apt/lists/* && \
