@@ -9,7 +9,7 @@ RUN echo "force-unsafe-io" > /etc/dpkg/dpkg.cfg.d/02apt-speedup &&\
     apt-get -q update && \
     apt-get -qy --force-yes dist-upgrade && \
     apt-get install -qy --force-yes curl && \
-    curl -o plexmediaserver.deb https://downloads.plex.tv/plex-media-server/0.9.16.0.1754-23623fb/plexmediaserver_0.9.16.0.1754-23623fb_amd64.deb && \
+    curl -o plexmediaserver.deb https://downloads.plex.tv/plex-media-server/0.9.16.6.1993-5089475/plexmediaserver_0.9.16.6.1993-5089475_amd64.deb && \
     dpkg -i plexmediaserver.deb && \
     rm -f plexmediaserver.deb && \
     apt-get -y autoremove && \
